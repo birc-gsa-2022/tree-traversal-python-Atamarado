@@ -32,5 +32,6 @@ def in_order(t: T | None) -> Iterable[int]:
 
     return output
 
-tree = T(2, T(1, None, None), T(4, T(3, None, None), T(5, None, None)))
-print(list(in_order(tree)))
+if __name__ == "__main__":
+    tree = T(2, T(1, None, None), T(4, T(3, None, None), T(5, None, None)))
+    print(list(in_order(tree)))
