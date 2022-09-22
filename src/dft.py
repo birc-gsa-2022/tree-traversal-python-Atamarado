@@ -13,8 +13,6 @@ def in_order(t: T | None) -> Iterable[int]:
     >>> list(in_order(tree))
     [1, 2, 3, 4, 5]
     """
-    if T is None:
-        return []
     
     output = []
     stack = []
