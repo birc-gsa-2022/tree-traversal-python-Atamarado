@@ -3,7 +3,6 @@
 from collections import deque
 from typing import Iterable
 from tree import T
-from dft import empty
 from collections import deque
 
 def bf_order(t: T | None) -> Iterable[int]:
@@ -16,7 +15,7 @@ def bf_order(t: T | None) -> Iterable[int]:
     queue = deque([t])
     output = []
 
-    while not(empty(queue)):
+    while queue:
         node = queue.popleft()
         if node is not None:
             output.append(node.val)
