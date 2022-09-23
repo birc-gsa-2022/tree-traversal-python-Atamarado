@@ -17,7 +17,7 @@ def in_order(t: T | None) -> Iterable[int]:
 
     while stack or node:
         # If our node is None, it means that we have processed the left part, and we can append the solution
-        if node is None:
+        if not(node):
             # Left part completed, we can process the parent
             node = stack.pop()
             output.append(node.val)
