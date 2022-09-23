@@ -17,7 +17,7 @@ def bf_order(t: T | None) -> Iterable[int]:
 
     while queue:
         node = queue.popleft()
-        if node is not None:
+        if node:
             output.append(node.val)
             queue.append(node.left)
             queue.append(node.right)
