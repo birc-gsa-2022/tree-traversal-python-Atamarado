@@ -10,3 +10,4 @@ class T:
     val: int
     left: T | None
     right: T | None
+    pointer: T | None

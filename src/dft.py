@@ -32,6 +32,12 @@ def in_order(t: T | None) -> Iterable[int]:
 
     return output
 
+def thread_tree(t: T | None) -> Iterable [int]
+    node = t
+    while t is not None:
+        if t.left is not None:
+            t.left.pointer = t
+
 if __name__ == "__main__":
     tree = T(2, T(1, None, None), T(4, T(3, None, None), T(5, None, None)))
     print(list(in_order(tree)))
