@@ -29,12 +29,57 @@ def in_order(t: T | None) -> Iterable[int]:
 
     return output
 
-def thread_tree(t: T | None) -> Iterable [int]:
+def thread_tree(t: T | None):
+    root = t
     node = t
-    while node is not None:
-        if node.left is not None:
-            node.left.pointer = node
+    next = None
+
+    if node.left:
+        next = node
+        node = node.left
+
+    while node:
+        if node is root:
+            node = node.right
+        elif node.left:
+            if node.thread:
+                if node.right:
+                    next = node.thread
+                    node.thread = None
+                    node = node.right
+                else:
+                    node = node.thread
+            else:
+                node.thread = next
+                next = node
+                node = node.left
+        elif node.right:
+            node = node.right
+        else:
+            node.thread = next
+            node = next
+            next = None
+
+def in_order_thread(t: T | None) -> Iterable [int]:
+    output = []
+
+    # Find the first node
+    node = t
+    while node.left:
+        node = node.left
+
+    # Inorder
+    while node:
+        output.append(node)
+        if node.right:
+            node = node.right
+        else:
+            node = node.thread
+    
+    return output
+
 
 if __name__ == "__main__":
     tree = T(2, T(1, None, None), T(4, T(3, None, None), T(5, None, None)))
-    print(list(in_order(tree)))
+    thread_tree(tree)
+    print(list(in_order_thread(tree)))
